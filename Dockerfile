@@ -1,6 +1,6 @@
-FROM gregnuj/cyclops-base:stretch as base
+FROM gregnuj/cyclops-base:stretch
 
-FROM library/php:stretch as php
+FROM library/php:stretch
 
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 
