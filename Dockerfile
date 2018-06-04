@@ -1,6 +1,6 @@
-FROM gregnuj/cyclops-base as base
+FROM gregnuj/cyclops-base:apline3.7 as base
 
-FROM php as php
+FROM library/php:alpine3.7 as php
 
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 
