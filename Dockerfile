@@ -1,4 +1,4 @@
-FROM gregnuj/cyclops-base:alpine3.7
+FROM gregnuj/cyclops-base
 
 FROM php:alpine3.7 as php
 
