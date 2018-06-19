@@ -10,6 +10,7 @@ RUN set -ex \
 RUN set -ex \
     && apt-get update \
     && apt-get install -y \
+    gnupg \
     php7.2 \
     php7.2-common \
     php7.2-phar \
