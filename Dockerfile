@@ -3,7 +3,7 @@ FROM gregnuj/cyclops-base:stretch
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 	
 RUN set -ex \
-    && curl -sS https://packages.sury.org/php/apt.gpg > /etc/apt/trusted.gpg.d/php.gpg
+    && curl -sS https://packages.sury.org/php/apt.gpg > /etc/apt/trusted.gpg.d/php.gpg \
     && echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list
 	
 # Install packages
