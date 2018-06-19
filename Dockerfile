@@ -2,9 +2,7 @@ FROM gregnuj/cyclops-base:stretch
 
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 	
-RUN apt install ca-certificates apt-transport-https \
-    && wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - \
-    && echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list 
+RUN add-apt-repository ppa:ondrej/php
 	
 # Install packages
 RUN set -ex \
