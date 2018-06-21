@@ -1,6 +1,6 @@
 FROM gregnuj/cyclops-base:latest
-
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
+USER root
 
 # Install packages 
 RUN set -ex \
@@ -18,7 +18,7 @@ RUN set -ex \
 	&& addgroup -S -g 82 www-data \
 	&& adduser  -S -u 82 -D -h /var/www -G www-data www-data
   
- USER www-data
- WORKDIR /var/www
- ENTRYPOINT ["/usr/bin/php"]
- CMD ["-a"]
+USER www-data
+WORKDIR /var/www
+ENTRYPOINT ["/usr/bin/php"]
+CMD ["-a"]
