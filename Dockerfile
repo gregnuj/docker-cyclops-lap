@@ -19,6 +19,6 @@ RUN set -ex \
 	&& adduser  -S -u 82 -D -h /var/www -G www-data www-data
   
  USER www-data
- WORKDIR /var/www/html
+ WORKDIR /var/www
  ENTRYPOINT ["/usr/bin/php"]
  CMD ["-a"]
