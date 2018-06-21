@@ -1,6 +1,6 @@
 FROM gregnuj/cyclops-base:stretch
-
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
+USER root
 
 # apt https
 RUN set -ex \
@@ -22,3 +22,9 @@ RUN set -ex \
     php7.2-phar \
     composer \
     && rm -r /var/lib/apt/lists/*
+
+# www-data - 33 exists in base image  
+USER www-data
+WORKDIR /var/www
+ENTRYPOINT ["/usr/bin/php"]
+CMD ["-a"]
