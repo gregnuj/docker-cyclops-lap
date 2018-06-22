@@ -17,8 +17,8 @@ RUN set -ex \
 RUN set -ex \
     && apt-get update \
     && apt-get install -y \
+    apache2 \
     php7.2 \
-    #php7.2-apache2 \
     php7.2-common \
     php7.2-curl \
     php7.2-intl \
