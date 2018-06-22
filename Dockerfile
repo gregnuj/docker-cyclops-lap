@@ -4,7 +4,7 @@ USER root
 
 # Install packages 
 RUN set -ex \
-  && apk add --no-cache \
+    && apk add --no-cache \
     php7 \
     php7-apache2 \
     php7-common \
