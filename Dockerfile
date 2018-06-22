@@ -18,8 +18,32 @@ RUN set -ex \
     && apt-get update \
     && apt-get install -y \
     php7.2 \
+    #php7.2-apache2 \
     php7.2-common \
+    php7.2-curl \
+    php7.2-intl \
+    php7.2-json \
+    php7.2-memcached \
+    #php7.2-mcrypt \ deprecated
+    php7.2-mbstring \
+    php7.2-mysqli \
+    php7.2-odbc \
+    php-pear \
     php7.2-phar \
+    php7.2-redis \
+    php7.2-snmp \
+    php7.2-soap \
+    php7.2-sockets \
+    php7.2-ssh2 \
+    php7.2-xdebug \
+    php7.2-xml \
+    php7.2-xsl \
+    php7.2-zip \
+    php7.2-pdo \
+    php7.2-sqlite3 \
+    php7.2-sybase \
+    php7.2-mysql \ 
+    php7.2-pgsql \ 
     composer \
     && rm -r /var/lib/apt/lists/*
 
