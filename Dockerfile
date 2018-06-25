@@ -45,7 +45,6 @@ RUN set -ex \
     php7.2-mysql \ 
     php7.2-pgsql \ 
     composer \
-    node \
     && rm -r /var/lib/apt/lists/*
 
 # www-data - 33 exists in base image  
