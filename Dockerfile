@@ -1,4 +1,4 @@
-FROM gregnuj/cyclops-php:apline3.7
+FROM gregnuj/cyclops-base:apline3.7
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 USER root
 
