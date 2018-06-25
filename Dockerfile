@@ -1,4 +1,4 @@
-FROM gregnuj/cyclops-base:stretch
+FROM gregnuj/cyclops-nodejs:stretch
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 USER root
 
