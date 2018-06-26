@@ -43,7 +43,5 @@ RUN set -ex \
     && addgroup -g 82 -S www-data \
     && adduser -u 82 -D -S -G www-data www-data  
   
-USER www-data
 WORKDIR /var/www/html
-ENTRYPOINT ["/usr/sbin/httpd"]
-CMD ["-DFOREGROUND"]
+CMD ["/usr/bin/supervisord -n"]
