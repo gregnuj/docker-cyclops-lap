@@ -38,5 +38,8 @@ RUN set -ex \
     composer \
     && rm -r /var/lib/apt/lists/*
 
+# add apache supervisord config
+COPY supervisord-apache2.conf /etc/supervisor/conf.d/apache2.conf
+
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord -n"]
