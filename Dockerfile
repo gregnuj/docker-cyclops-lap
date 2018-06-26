@@ -32,7 +32,8 @@ RUN set -ex \
     php7-pdo_sqlite \
     php7-pdo_dblib \
     php7-pdo_mysql \
-    php7-pdo_pgsql 
+    php7-pdo_pgsql \
+    apache
 
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
