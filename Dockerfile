@@ -42,8 +42,7 @@ COPY --from=library/composer /usr/bin/composer /usr/bin/composer
 COPY supervisord-apache2.conf /etc/supervisor/conf.d/apache2.conf
   
 # add www-data user
-RUN set -x \
-    && addgroup -g 82 -S www-data \
+RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data  
 
 WORKDIR /var/www/html
