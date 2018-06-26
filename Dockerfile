@@ -38,8 +38,5 @@ RUN set -ex \
     composer \
     && rm -r /var/lib/apt/lists/*
 
-# www-data - 33 exists in base image  
-USER www-data
 WORKDIR /var/www/html
-ENTRYPOINT ["/usr/sbin/httpd"]
-CMD ["-DFOREGROUND"]
+CMD ["/usr/bin/supervisord -n"]
