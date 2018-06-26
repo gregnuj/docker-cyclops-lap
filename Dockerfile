@@ -1,5 +1,4 @@
 FROM gregnuj/cyclops-nodejs:latest
-
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 USER root
 
@@ -38,6 +37,9 @@ RUN set -ex \
 
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
+  
+# add apache supervisord config
+COPY supervisord-apache2.conf /etc/supervisor/conf.d/apache2.conf
   
 # add www-data user
 RUN set -ex \
