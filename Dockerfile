@@ -49,6 +49,6 @@ RUN set -ex \
 
 # www-data - 33 exists in base image  
 USER www-data
-WORKDIR /var/www
-ENTRYPOINT ["/usr/bin/php"]
-CMD ["-a"]
+WORKDIR /var/www/html
+ENTRYPOINT ["/usr/sbin/apache2"]
+CMD ["-DFOREGROUND"]
