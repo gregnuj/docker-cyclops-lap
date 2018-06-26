@@ -33,7 +33,7 @@ RUN set -ex \
     php7-pdo_dblib \
     php7-pdo_mysql \
     php7-pdo_pgsql \
-    apache
+    apache2
 
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
@@ -42,8 +42,6 @@ COPY --from=library/composer /usr/bin/composer /usr/bin/composer
 RUN set -ex \
     && addgroup -g 82 -S www-data \
     && adduser -u 82 -D -S -G www-data www-data  
-  
-USER www-data
+
 WORKDIR /var/www/html
-ENTRYPOINT ["/usr/sbin/httpd"]
-CMD ["-DFOREGROUND"]
+CMD ["/usr/bin/supervisord -n"]

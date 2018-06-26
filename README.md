@@ -1,2 +1,2 @@
-# docker-cyclops-php
-Cyclops php image
+# docker-cyclops-lap
+Cyclops lap image
