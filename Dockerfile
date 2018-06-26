@@ -38,6 +38,11 @@ RUN set -ex \
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
+# add www-data user
+RUN set -ex \
+    && addgroup -g 82 -S www-data \
+    && adduser -u 82 -D -S -G www-data www-data  
+  
 USER www-data
 WORKDIR /var/www/html
 ENTRYPOINT ["/usr/sbin/httpd"]
