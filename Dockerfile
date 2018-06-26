@@ -1,4 +1,5 @@
 FROM gregnuj/cyclops-nodejs:latest
+
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 USER root
 
@@ -42,6 +43,6 @@ COPY --from=library/composer /usr/bin/composer /usr/bin/composer
 RUN set -ex \
     && addgroup -g 82 -S www-data \
     && adduser -u 82 -D -S -G www-data www-data  
-  
+
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord -n"]
