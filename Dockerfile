@@ -39,7 +39,6 @@ RUN set -ex \
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
 USER www-data
-WORKDIR /var/www
-ENTRYPOINT ["/usr/bin/php"]
-CMD ["-a"]
-COPY --from=library/composer /usr/bin/composer /usr/bin/composer
+WORKDIR /var/www/html
+ENTRYPOINT ["/usr/sbin/httpd"]
+CMD ["-DFOREGROUND"]
