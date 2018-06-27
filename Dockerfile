@@ -1,4 +1,4 @@
-FROM gregnuj/cyclops-base:apline3.7
+FROM gregnuj/cyclops-base:alpine3.7
 LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 USER root
 
@@ -39,7 +39,7 @@ RUN set -ex \
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
 # add apache supervisord config
-COPY supervisord-apache2.conf /etc/supervisor.d/apache2.ini
+COPY supervisord-apache2.conf /etc/supervisor.d/default.ini
   
 # add www-data user
 RUN set -ex \
