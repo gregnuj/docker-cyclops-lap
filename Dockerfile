@@ -39,7 +39,7 @@ RUN set -ex \
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
 # add apache supervisord config 
-COPY supervisord-apache.conf /etc/supervisor.d/default.ini
+COPY supervisord-default /etc/supervisor.d/default.ini
   
 # add www-data user
 RUN set -ex \
