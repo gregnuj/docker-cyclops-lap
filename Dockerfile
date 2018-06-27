@@ -39,7 +39,7 @@ RUN set -ex \
     && rm -r /var/lib/apt/lists/*
 
 # add apache supervisord config 
-COPY supervisord-default /etc/supervisor.d/default.ini
+COPY supervisord-default /etc/supervisord/conf.d/default.conf
   
 # add apache supervisord config 
 COPY httpd-foreground /usr/local/bin/httpd-foreground
