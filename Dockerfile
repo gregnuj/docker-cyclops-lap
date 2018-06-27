@@ -5,7 +5,7 @@ USER root
 # Install packages
 RUN set -ex \
     && curl -sS https://packages.sury.org/php/apt.gpg > /etc/apt/trusted.gpg.d/php.gpg \
-    && echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list
+    && echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list \
     && apt-get update \
     && apt-get install -y \
     apache2 \
