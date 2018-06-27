@@ -44,6 +44,7 @@ COPY supervisord-apache.conf /etc/supervisor.d/default.ini
 # add www-data user
 RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data  
+    && mkdir /run/apache2
 
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
