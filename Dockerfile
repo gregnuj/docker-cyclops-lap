@@ -41,6 +41,9 @@ COPY --from=library/composer /usr/bin/composer /usr/bin/composer
 # add apache supervisord config 
 COPY supervisord-default /etc/supervisor.d/default.ini
   
+# add apache supervisord config
+COPY httpd-foreground /usr/local/bin/httpd-foreground
+
 # add www-data user
 RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data \
