@@ -46,4 +46,4 @@ RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data  
 
 WORKDIR /var/www/html
-CMD ["/usr/bin/supervisord -n"]
+CMD ["/usr/bin/supervisord", "-n"]
