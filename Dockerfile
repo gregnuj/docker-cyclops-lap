@@ -39,8 +39,8 @@ RUN set -ex \
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
 # add apache supervisord config
-COPY supervisord-apache2.conf /etc/supervisor/conf.d/apache2.conf
-  
+COPY supervisord-apache2.conf /etc/supervisor.d/apache2.ini
+ 
 # add www-data user
 RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data  
