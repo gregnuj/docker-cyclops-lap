@@ -1,6 +1,6 @@
-[program:apache2]
+[program:httpd]
 user=www-data
-command=/usr/sbin/apache2 -DFOREGROUND
+command=/usr/local/bin/httpd-foreground 
 numprocs=1
 autostart=true
 autorestart=true
