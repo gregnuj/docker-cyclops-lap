@@ -44,5 +44,8 @@ COPY supervisord-default /etc/supervisor/conf.d/default.conf
 # add apache supervisord config 
 COPY httpd-foreground /usr/local/bin/httpd-foreground
 
+RUN set -ex \ 
+    && chmod 755 /usr/local/bin/httpd-foreground
+
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
