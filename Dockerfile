@@ -19,6 +19,7 @@ RUN set -ex \
     php7-pear \
     php7-phar \
     php7-redis \
+    php7-simplexml \
     php7-snmp \
     php7-soap \
     php7-sockets \
