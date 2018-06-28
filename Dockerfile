@@ -24,6 +24,7 @@ RUN set -ex \
     php7-soap \
     php7-sockets \
     php7-ssh2 \
+    php7-tokenizer \
     php7-xdebug \
     php7-xml \
     php7-xsl \
