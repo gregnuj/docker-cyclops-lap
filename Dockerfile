@@ -46,6 +46,7 @@ COPY httpd-foreground /usr/local/bin/httpd-foreground
 
 # add www-data user
 RUN set -ex \
+    && ln -s /var/www/html /var/www/localhost/htdocs \
     && chmod 755 /usr/local/bin/httpd-foreground \
     && adduser -u 82 -D -S -G www-data www-data \
     && mkdir /run/apache2
