@@ -27,6 +27,7 @@ RUN set -ex \
     php7-tokenizer \
     php7-xdebug \
     php7-xml \
+    php7-xmlwriter \
     php7-xsl \
     php7-zip \
     php7-pdo \
