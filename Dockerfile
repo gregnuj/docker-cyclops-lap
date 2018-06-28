@@ -38,6 +38,9 @@ RUN set -ex \
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
+# get apache config from httpd
+COPY --from=library/httpd:alpine /etc/apache2 /etc/apache2 
+  
 # add apache supervisord config 
 COPY supervisord-default /etc/supervisor.d/default.ini
   
