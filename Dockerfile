@@ -19,12 +19,15 @@ RUN set -ex \
     php7-pear \
     php7-phar \
     php7-redis \
+    php7-simplexml \
     php7-snmp \
     php7-soap \
     php7-sockets \
     php7-ssh2 \
+    php7-tokenizer \
     php7-xdebug \
     php7-xml \
+    php7-xmlwriter \
     php7-xsl \
     php7-zip \
     php7-pdo \
@@ -46,10 +49,10 @@ COPY httpd-foreground /usr/local/bin/httpd-foreground
 
 # add www-data user
 RUN set -ex \
-    && ln -s /var/www/localhost/htdocs /var/www/html \ 
+    && ln -s /var/www/localhost/htdocs /var/www/html \
     && chmod 755 /usr/local/bin/httpd-foreground \
     && adduser -u 82 -D -S -G www-data www-data \
-    && mkdir /run/apache2
+    && mkdir /run/apache2 
 
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
