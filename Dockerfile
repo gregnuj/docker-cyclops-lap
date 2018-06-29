@@ -34,11 +34,11 @@ RUN set -ex \
     php7.2-xsl \
     php7.2-zip \
     php7.2-pdo \
-    php-pdo_odbc \
-    php-pdo_sqlite \
-    php-pdo_dblib \
-    php-pdo_mysql \
-    php-pdo_pgsql \
+    #php7.2-pdo_odbc \
+    php7.2-sqlite3 \
+    php7.2-sybase \
+    php7.2-mysql \ 
+    php7.2-pgsql \ 
     apache2 \
     composer \
     && rm -r /var/lib/apt/lists/*
