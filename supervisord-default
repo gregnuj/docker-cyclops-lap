@@ -1,5 +1,4 @@
 [program:httpd]
-user=www-data
 command=/usr/local/bin/httpd-foreground 
 numprocs=1
 autostart=true
