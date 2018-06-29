@@ -9,7 +9,6 @@ RUN set -ex \
     && apt-get update \
     && apt-get install -y \
     php7.2 \
-    php7.2-apache2 \
     php7.2-common \
     php7.2-curl \
     php7.2-intl \
@@ -19,7 +18,7 @@ RUN set -ex \
     php7.2-mbstring \
     php7.2-mysqli \
     php7.2-odbc \
-    php7.2-pear \
+    php-pear \
     php7.2-phar \
     php7.2-redis \
     php7.2-simplexml \
