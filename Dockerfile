@@ -15,7 +15,7 @@ RUN set -ex \
     php7.2-intl \
     php7.2-json \
     php7.2-memcached \
-    php7.2-mcrypt \
+    #php7.2-mcrypt \
     php7.2-mbstring \
     php7.2-mysqli \
     php7.2-odbc \
