@@ -3,7 +3,6 @@ LABEL MAINTAINER="Greg Junge <gregnuj@gmail.com>"
 USER root
 	
 # Install packages 
-<<<<<<< HEAD
 RUN set -ex \ 
     && curl -sS https://packages.sury.org/php/apt.gpg > /etc/apt/trusted.gpg.d/php.gpg \
     && echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list \
@@ -40,7 +39,7 @@ RUN set -ex \
     php7.2-pdo_dblib \
     php7.2-pdo_mysql \
     php7.2-pdo_pgsql \
-    apache2
+    apache2 \
     composer \
     && rm -r /var/lib/apt/lists/*
 
