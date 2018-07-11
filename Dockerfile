@@ -41,17 +41,19 @@ RUN set -ex \
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
-# add apache supervisord config
-COPY supervisord-default /etc/supervisor.d/default.ini
-  
-# add apache supervisord config
-COPY httpd-foreground /usr/local/bin/httpd-foreground
+# add files in rootfs
+ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
     && ln -s /var/www/localhost/htdocs /var/www/html \
     && chmod 755 /usr/local/bin/httpd-foreground \
     && adduser -u 82 -D -S -G www-data www-data \
+    && sed -i \
+    -e's/#LoadModule rewrite_module/LoadModule rewrite_module/' \
+    -e 's/^User apache/User www-data/' \
+    -e 's/^Group apache/Group www-data/' \
+    /etc/apache2/httpd.conf \
     && mkdir /run/apache2 
 
 WORKDIR /var/www/html
