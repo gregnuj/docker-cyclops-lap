@@ -41,11 +41,8 @@ RUN set -ex \
 # get composer from library/composer (uses alpine:3.7)
 COPY --from=library/composer /usr/bin/composer /usr/bin/composer
   
-# add apache supervisord config 
-COPY supervisord-default /etc/supervisor.d/default.ini
-  
-# add apache supervisord config
-COPY httpd-foreground /usr/local/bin/httpd-foreground
+# add files in rootfs
+ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
