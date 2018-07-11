@@ -42,16 +42,16 @@ RUN set -ex \
     composer \
     && rm -r /var/lib/apt/lists/*
 
-# add apache supervisord config 
-COPY supervisord-default /etc/supervisor/conf.d/default.conf
-  
-# add apache supervisord config
-COPY httpd-foreground /usr/local/bin/httpd-foreground
+# add files in rootfs
+ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
     && ln -s /var/www/localhost/htdocs /var/www/html \
-    && chmod 755 /usr/local/bin/httpd-foreground 
+    && chmod 755 /usr/local/bin/httpd-foreground \
+    && sed -i \
+    -e's/#LoadModule rewrite_module/LoadModule rewrite_module/' \
+    /etc/apache2/httpd.conf 
 
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
