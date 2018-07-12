@@ -57,5 +57,5 @@ RUN set -ex \
     /etc/apache2/httpd.conf \
     && mkdir /run/apache2 
 
-WORKDIR /var/www/html
+WORKDIR /var/www
 CMD ["/usr/bin/supervisord", "-n"]
