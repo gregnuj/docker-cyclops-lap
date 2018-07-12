@@ -47,8 +47,8 @@ ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
-    && ln -s /var/www/localhost/htdocs /var/www/html \
     && chmod 755 /usr/local/bin/httpd-foreground \
+    && chown -R www-data:www-data /var/www \
     && sed -i \
     -e's/#LoadModule rewrite_module/LoadModule rewrite_module/' \
     /etc/apache2/httpd.conf 
