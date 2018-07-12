@@ -49,9 +49,7 @@ ADD ./rootfs /
 RUN set -ex \
     && chmod 755 /usr/local/bin/httpd-foreground \
     && chown -R www-data:www-data /var/www \
-    && sed -i \
-    -e's/#LoadModule rewrite_module/LoadModule rewrite_module/' \
-    /etc/apache2/httpd.conf 
+    && a2enmod rewrite
 
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
