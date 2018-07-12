@@ -51,5 +51,5 @@ RUN set -ex \
     && chown -R www-data:www-data /var/www \
     && a2enmod rewrite
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
