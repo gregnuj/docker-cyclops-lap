@@ -46,9 +46,10 @@ ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
-    && ln -s /var/www/localhost/htdocs /var/www/html \
     && chmod 755 /usr/local/bin/httpd-foreground \
     && adduser -u 82 -D -S -G www-data www-data \
+    && chown -R www-data:www-data /var/www \
+    && ln -s /var/www/localhost/htdocs /var/www/html \
     && sed -i \
     -e's/#LoadModule rewrite_module/LoadModule rewrite_module/' \
     -e 's/^User apache/User www-data/' \
