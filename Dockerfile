@@ -51,5 +51,11 @@ RUN set -ex \
     && chown -R www-data:www-data /var/www \
     && a2enmod rewrite
 
+# add Codiad and web console
+RUN set -ex \
+    && git clone https://github.com/Codiad/Codiad /var/www/html/codiad \
+    && wget https://github.com/nickola/web-console/releases/download/v0.9.7/webconsole-0.9.7.zip  \
+    && unzip webconsole-0.9.7.zip -d /var/www/html
+             
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
