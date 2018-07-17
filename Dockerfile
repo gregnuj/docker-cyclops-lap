@@ -57,5 +57,6 @@ RUN set -ex \
     && wget https://github.com/nickola/web-console/releases/download/v0.9.7/webconsole-0.9.7.zip  \
     && unzip webconsole-0.9.7.zip -d /var/www/html
              
+EXPOSE 22 80 443
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
