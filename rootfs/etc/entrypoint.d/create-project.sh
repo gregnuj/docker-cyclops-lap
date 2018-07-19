@@ -30,3 +30,4 @@ fi
 if [ -d "${PROJECT_DIR}" ]; then
     chown -R ${APP_USER}:${APP_GROUP} ${PROJECT_DIR}
 fi
+
