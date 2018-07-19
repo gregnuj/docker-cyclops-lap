@@ -11,3 +11,4 @@ elif [ -e "/usr/sbin/apache2" ]; then
 fi
 
 exec $HTTPD -DFOREGROUND
+
