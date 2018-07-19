@@ -8,15 +8,15 @@ set -x
 git config --global user.name "${APP_USER}"
 git config --global user.email "${APP_EMAIL}"
 
-APP_DIR="${APP_DIR:-$(pwd)/${APP_NAME}}"
+PROJECT_DIR="${PROJECT_DIR:-$(pwd)/${APP_NAME}}"
 PROJECT_GIT_URL="${PROJECT_GIT_URL}"
 PROJECT_GIT_BRANCH="${PROJECT_GIT_BRANCH:-master}"
 
 if [ -n "$PROJECT_GIT_URL" ]; then
 	# sleep random amount to avoid collision
 	sleep $(( $RANDOM % 3 +  $RANDOM % 5 ))
-	if [ ! "$(ls -A ${APP_DIR})" ]; then
-		git clone -b "$PROJECT_GIT_BRANCH" "$PROJECT_GIT_URL" "$APP_DIR"
+	if [ ! "$(ls -A ${PROJECT_DIR})" ]; then
+		git clone -b "$PROJECT_GIT_BRANCH" "$PROJECT_GIT_URL" "$PROJECT_DIR"
 	fi
 	if [ -f "./composer.json" ]; then
 		composer update
