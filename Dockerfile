@@ -60,6 +60,7 @@ RUN set -ex \
 # add Codiad and web console
 RUN set -ex \
     && git clone https://github.com/Codiad/Codiad /var/www/html/codiad \
+    && sed -e 's/mb_ord/xmb_ord/g' -e 's/mb_chr/xmb_chr/g' /var/www/html/codiad/lib/diff_match_patch.php \
     && wget https://github.com/nickola/web-console/releases/download/v0.9.7/webconsole-0.9.7.zip  \
     && unzip webconsole-0.9.7.zip -d /var/www/html
              
