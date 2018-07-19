@@ -50,11 +50,6 @@ RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data \
     && chown -R www-data:www-data /var/www \
     && ln -s /var/www/localhost/htdocs /var/www/html \
-    && sed -i \
-    -e's/#LoadModule rewrite_module/LoadModule rewrite_module/' \
-    -e 's/^User apache/User www-data/' \
-    -e 's/^Group apache/Group www-data/' \
-    /etc/apache2/httpd.conf \
     && mkdir /run/apache2 
 
 # add Codiad and web console
