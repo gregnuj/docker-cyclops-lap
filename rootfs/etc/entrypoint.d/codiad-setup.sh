@@ -40,3 +40,5 @@ fi
 
 # set/fix permissions for codiad
 chown -R ${APP_USER}:${APP_GROUP} ${CODIAD_BASE}
+
+
