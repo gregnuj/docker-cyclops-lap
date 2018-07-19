@@ -5,12 +5,14 @@
 
 set -x
 
+export APP_USER="${APP_USER:-cyclops}"
+export APP_EMAIL="${APP_EMAIL:-${APP_USER}@localhost}"
+export PROJECT_DIR="${PROJECT_DIR:-$(pwd)/${APP_NAME}}"
+export PROJECT_GIT_URL="${PROJECT_GIT_URL}"
+export PROJECT_GIT_BRANCH="${PROJECT_GIT_BRANCH:-master}"
+
 git config --global user.name "${APP_USER}"
 git config --global user.email "${APP_EMAIL}"
-
-PROJECT_DIR="${PROJECT_DIR:-$(pwd)/${APP_NAME}}"
-PROJECT_GIT_URL="${PROJECT_GIT_URL}"
-PROJECT_GIT_BRANCH="${PROJECT_GIT_BRANCH:-master}"
 
 if [ -n "$PROJECT_GIT_URL" ]; then
 	# sleep random amount to avoid collision
