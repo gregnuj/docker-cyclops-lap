@@ -2,6 +2,7 @@
 
 # may need to set these
 export APP_USER="${APP_USER:-cyclops}"
+export APP_GROUP="${APP_GROUP:-${APP_USER}}"
 export PROJECT_DIR="${PROJECT_DIR:-$(pwd)/${APP_NAME}}"
 export CODIAD_BASE="${CODIAD_BASE:-/var/www/html/codiad}"
 export CODIAD_DATA="${CODIAD_DATA:-${CODIAD_BASE}/data}"
@@ -36,3 +37,6 @@ if [ ! -f "${CODIAD_USERS}" ]; then
 	fi
 	echo "<?php /*|[{\"username\":\"${APP_USER}\",\"password\":\"${APP_PASSWD}\",\"project\":\"${PROJECT_DIR}\"}]|*/ ?>" > ${CODIAD_USERS}
 fi
+
+# set/fix permissions for codiad
+chown -R ${APP_USER}:${APP_GROUP} ${CODIAD_BASE}
