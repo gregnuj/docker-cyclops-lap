@@ -2,17 +2,17 @@
 
 export APP_USER="${APP_USER:-cyclops}"
 export APP_GROUP="${APP_GROUP:-${APP_USER}}"
-export WEBCOSOLE_BASE=${WEBCOSOLE_BASE:-/var/www/html/webconsole}
-export WEBCOSOLE_PHP=${WEBCOSOLE_PHP:-${WEBCOSOLE_BASE}/webconsole.php}
+export WEBCONSOLE_BASE=${WEBCONSOLE_BASE:-/var/www/html/webconsole}
+export WEBCONSOLE_PHP=${WEBCONSOLE_PHP:-${WEBCONSOLE_BASE}/webconsole.php}
 
 WEBCONSOLE_SECRET="${WEBCONSOLE_SECRET:-/var/run/secrets/app_password}"
 
 if [ -n "${APP_PASSWD}" ]; then
 	# Create webconsole secret if it does not exist
-	if [ ! -f "${WEBCOSOLE_SECRET}" ]; then
-		openssl rand -base64 10 > ${CODIAD_SECRET}
+	if [ ! -f "${WEBCONSOLE_SECRET}" ]; then
+		openssl rand -base64 10 > ${WEBCONSOLE_SECRET}
 	fi
-	APP_PASSWD="$(cat ${CODIAD_SECRET} | sha256sum | awk '{print $1}')"
+	APP_PASSWD="$(cat ${WEBCONSOLE_SECRET} | sha256sum | awk '{print $1}')"
 fi
 
 sed -i \
