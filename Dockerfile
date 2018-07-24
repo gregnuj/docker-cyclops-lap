@@ -61,6 +61,8 @@ ENV \
     PROJECT_GIT_BRANCH="master" \
     # install codiad
     CODIAD_INSTALL="" \
+    # install dbninja
+    DBNINJA_INSTALL="" \
     # install webconsole
     WEBCONSOLE_INSTALL=""
 
