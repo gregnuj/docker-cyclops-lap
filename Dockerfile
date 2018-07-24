@@ -52,14 +52,7 @@ RUN set -ex \
     && ln -s /var/www/localhost/htdocs /var/www/html \
     && mkdir /run/apache2 
 
-# add Codiad and web console
-RUN set -ex \
-    && git clone https://github.com/Codiad/Codiad /var/www/html/codiad \
-    && sed -i -e 's/mb_ord/xmb_ord/g' -e 's/mb_chr/xmb_chr/g' /var/www/html/codiad/lib/diff_match_patch.php \
-    && wget https://github.com/nickola/web-console/releases/download/v0.9.7/webconsole-0.9.7.zip  \
-    && unzip webconsole-0.9.7.zip -d /var/www/html
-     
-# env variables for create-project.sh script  
+# env variables for entrypoint scripts
 ENV \
     # defaults to $PWD/$APP_NAME
     PROJECT_DIR="" \
@@ -67,7 +60,13 @@ ENV \
     PROJECT_GIT_URL="" \
     # GIT BRANCH to clone
     PROJECT_GIT_BRANCH="master"
+    # install codiad
+    CODIAD_INSTALL=""
+    # install webconsole
+    WEBCONSOLE_INSTALL=""
 
 EXPOSE 22 80 443
+VOLUME ["/var/www/html"]
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
+
