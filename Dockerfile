@@ -59,9 +59,9 @@ ENV \
     # GIT URL to clone
     PROJECT_GIT_URL="" \
     # GIT BRANCH to clone
-    PROJECT_GIT_BRANCH="master"
+    PROJECT_GIT_BRANCH="master" \
     # install codiad
-    CODIAD_INSTALL=""
+    CODIAD_INSTALL="" \
     # install webconsole
     WEBCONSOLE_INSTALL=""
 
