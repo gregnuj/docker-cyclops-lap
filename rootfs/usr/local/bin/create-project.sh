@@ -3,8 +3,6 @@
 # similar to composer --create-project
 # but does not require git vcs config in advance
 
-set -x
-
 export APP_USER="${APP_USER:-cyclops}"
 export APP_GROUP="${APP_GROUP:-${APP_USER}}"
 export APP_EMAIL="${APP_EMAIL:-${APP_USER}@localhost}"
