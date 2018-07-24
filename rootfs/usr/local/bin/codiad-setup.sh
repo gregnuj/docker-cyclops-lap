@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# skip install unless requested
+if [ -z "$CODIAD_INSTALL" ]; then
+	exit 0
+fi
+
 # may need to set these
 export APP_USER="${APP_USER:-cyclops}"
 export APP_GROUP="${APP_GROUP:-${APP_USER}}"
@@ -13,6 +18,11 @@ CODIAD_PROJECTS="${CODIAD_PROJECTS:-${CODIAD_DATA}/projects.php}"
 CODIAD_SETTINGS="${CODIAD_SETTINGS:-${CODIAD_DATA}/settings.php}"
 CODIAD_USERS="${CODIAD_USERS:-${CODIAD_DATA}/users.php}"
 
+# Download and install
+if [ ! -e "${CODIAD_BASE}" ]; then
+    git clone https://github.com/Codiad/Codiad ${CODIAD_BASE}
+    sed -i -e 's/mb_ord/xmb_ord/g' -e 's/mb_chr/xmb_chr/g' ${CODIAD_BASE}/lib/diff_match_patch.php 
+fi
 
 # populate projects
 if [ ! -f "${CODIAD_PROJECTS}" ]; then
