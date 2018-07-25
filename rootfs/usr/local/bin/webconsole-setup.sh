@@ -11,6 +11,8 @@ export APP_GROUP="${APP_GROUP:-${APP_USER}}"
 export WEBCONSOLE_BASE="${WEBCONSOLE_BASE:-/var/www/html/}"
 export WEBCONSOLE_DIR="${WEBCONSOLE_DIR:-${WEBCONSOLE_BASE}/webconsole}"
 export WEBCONSOLE_PHP="${WEBCONSOLE_PHP:-${WEBCONSOLE_DIR}/webconsole.php}"
+export http_proxy="${http_proxy:-${HTTP_PROXY}}"
+export https_proxy="${https_proxy:-${HTTPS_PROXY}}"
 
 # locals
 WEBCONSOLE_ZIP="webconsole-0.9.7.zip"
