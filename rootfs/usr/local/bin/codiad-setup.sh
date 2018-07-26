@@ -17,38 +17,40 @@ CODIAD_SECRET="${CODIAD_SECRET:-/var/run/secrets/app_password}"
 CODIAD_PROJECTS="${CODIAD_PROJECTS:-${CODIAD_DATA}/projects.php}"
 CODIAD_SETTINGS="${CODIAD_SETTINGS:-${CODIAD_DATA}/settings.php}"
 CODIAD_USERS="${CODIAD_USERS:-${CODIAD_DATA}/users.php}"
+CODIAD_TZ="${CODIAD_TZ:-America/Chicago}"
 
 # Download and install
 if [ ! -e "${CODIAD_BASE}" ]; then
-    git clone https://github.com/Codiad/Codiad ${CODIAD_BASE}
-    sed -i -e 's/mb_ord/xmb_ord/g' -e 's/mb_chr/xmb_chr/g' ${CODIAD_BASE}/lib/diff_match_patch.php 
-fi
-
-# populate projects
-if [ ! -f "${CODIAD_PROJECTS}" ]; then
-	echo "<?php /*|[{\"name\":\"inventory\",\"path\":\"${PROJECT_DIR}\"}]|*/ ?>" > ${CODIAD_PROJECTS}
-fi
-
-# populate settings
-if [ ! -f "${CODIAD_SETTINGS}" ]; then
-	echo "<?php /*|{\"${APP_USER}\":{\"codiad.username\":\"${APP_USER}\"}}|*/ ?>" > ${CODIAD_SETTINGS}
-fi
-
-# populate users
-if [ ! -f "${CODIAD_USERS}" ]; then
-	# set variable for use in CODIAD_USERS
-	if [ -n "${APP_PASSWD}" ]; then
-		# Create codiad secret if it does not exist
-		if [ ! -f "${CODIAD_SECRET}" ]; then
-			openssl rand -base64 10 > ${CODIAD_SECRET}
-		fi
-		APP_PASSWD="$(cat ${CODIAD_SECRET} | md5sum | awk '{print $1}')"
-		APP_PASSWD="$(echo -n "${APP_PASSWD}" | sha1sum | awk '{print $1}')"
-	fi
-	echo "<?php /*|[{\"username\":\"${APP_USER}\",\"password\":\"${APP_PASSWD}\",\"project\":\"${PROJECT_DIR}\"}]|*/ ?>" > ${CODIAD_USERS}
+	git clone https://github.com/Codiad/Codiad ${CODIAD_BASE}
+	sed -i -e 's/mb_ord/xmb_ord/g' -e 's/mb_chr/xmb_chr/g' ${CODIAD_BASE}/lib/diff_match_patch.php
 fi
 
 # set/fix permissions for codiad
 chown -R ${APP_USER}:${APP_GROUP} ${CODIAD_BASE}
+
+# populate users
+if [[ ! -f "${CODIAD_USERS}" || ! -f "${CODIAD_PROJECTS}" || ! -f "${CODIAD_PROJECTS}" ]]; then
+	# set variable for use in CODIAD_USERS
+	if [ -z "${APP_PASSWD}" ]; then
+		# Create codiad secret if it does not exist
+		if [ ! -f "${CODIAD_SECRET}" ]; then
+			openssl rand -base64 10 > ${CODIAD_SECRET}
+		fi
+		APP_PASSWD="$(cat ${CODIAD_SECRET})"
+	fi
+	DATA="path=${CODIAD_BASE}"
+	DATA+="&username=${APP_USER}"
+	DATA+="&password=${APP_PASSWD}"
+	DATA+="&password_confirm=${APP_PASSWD}"
+	DATA+="&project_name=${APP_NAME}"
+	DATA+="&project_path=${PROJECT_DIR}"
+	DATA+="&timezone=${CODIAD_TZ}"
+
+	# remove existing and create new
+	for file in ${CODIAD_DATA}/*.php; do
+		rm $file
+	done
+	curl -sS http://127.0.0.1/codiad/components/install/process.php --data "${DATA}"
+fi
 
 
