@@ -20,9 +20,10 @@ WEBCONSOLE_URL="https://github.com/nickola/web-console/releases/download/v0.9.7/
 WEBCONSOLE_SECRET="${WEBCONSOLE_SECRET:-/var/run/secrets/app_password}"
 
 # Install if needed
-if [ -z "${WEBCONSOLE_DIR}" ]; then
+if [ ! -e "${WEBCONSOLE_DIR}" ]; then
     wget ${WEBCONSOLE_URL}
     unzip ${WEBCONSOLE_ZIP} -d ${WEBCONSOLE_BASE}
+    rm ${WEBCONSOLE_ZIP}
 fi
 
 # Get weconsole password 
@@ -36,9 +37,9 @@ fi
 
 # Set weconsole user/password 
 sed -i \
-	-e "s/^\$USER = .*\$/\$USER = \"${APP_USER}\"/" \
-	-e "s/^\$PASSWORD = .*\$/\$PASSWORD = \"${APP_PASSWD}\"/" \
-	-e "s/^\$PASSWORD_HASH_ALGORITHM = .*\$/\$PASSWORD_HASH_ALGORITHM = \"sha256\"/" \
+	-e "s/^\$USER = .*\$/\$USER = \"${APP_USER}\";/" \
+	-e "s/^\$PASSWORD = .*\$/\$PASSWORD = \"${APP_PASSWD}\";/" \
+	-e "s/^\$PASSWORD_HASH_ALGORITHM = .*\$/\$PASSWORD_HASH_ALGORITHM = \"sha256\";/" \
 	${WEBCONSOLE_PHP}
 
 # set/fix permissions for webconsol

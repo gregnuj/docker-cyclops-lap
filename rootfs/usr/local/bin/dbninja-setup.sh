@@ -12,7 +12,7 @@ DBNINJA_URL="https://www.dbninja.com/download/dbninja.tar.gz"
 
 
 # Install if needed
-if [ -z "${DBNINJA_DIR}" ]; then
+if [ ! -d "${DBNINJA_DIR}" ]; then
     cd ${DBNINJA_BASE}
     curl -sS "${DBNINJA_URL}" | tar xz
 fi
