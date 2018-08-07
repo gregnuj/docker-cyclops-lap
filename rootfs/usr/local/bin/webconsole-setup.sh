@@ -27,7 +27,7 @@ if [ ! -e "${WEBCONSOLE_DIR}" ]; then
 fi
 
 # Get weconsole password 
-if [ -n "${APP_PASSWD}" ]; then
+if [ -z "${APP_PASSWD}" ]; then
 	# Create webconsole secret if it does not exist
 	if [ ! -f "${WEBCONSOLE_SECRET}" ]; then
 		openssl rand -base64 10 > ${WEBCONSOLE_SECRET}
