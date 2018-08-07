@@ -42,6 +42,12 @@ sed -i \
 	-e "s/^\$PASSWORD_HASH_ALGORITHM = .*\$/\$PASSWORD_HASH_ALGORITHM = \"sha256\";/" \
 	${WEBCONSOLE_PHP}
 
-# set/fix permissions for webconsol
+if [ ! -f "${WEBCONSOLE_BASE}/.htaccess" ]; then
+	echo "RewriteEngine On" > "${WEBCONSOLE_BASE}/.htaccess"
+	echo "RewriteRule ^webconsole.* webconsole/webconsole.php [L,NC]" >> "${WEBCONSOLE_BASE}/.htaccess"
+fi
+
+
+# set/fix permissions for webconsole
 chown -R ${APP_USER}:${APP_GROUP} ${WEBCONSOLE_DIR}
 
