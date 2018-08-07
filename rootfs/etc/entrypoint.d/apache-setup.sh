@@ -9,4 +9,5 @@ sed -i \
     -e 's/^User .*/User ${APP_USER}/' \
     -e 's/^Group .*/Group ${APP_USER}/' \
     -e 's/^Listen .*/Listen ${APACHE_PORT}/' \
+    -e 's/AllowOverride None/AllowOverride All/' \
     /etc/apache2/httpd.conf 
