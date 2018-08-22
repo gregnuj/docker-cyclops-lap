@@ -46,10 +46,9 @@ ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
-    && chmod 755 /usr/local/bin/httpd-foreground \
+    && chmod 4755 /usr/local/sbin/httpd-foreground \
     && adduser -u 82 -D -S -G www-data www-data \
     && chown -R www-data:www-data /var/www \
-    && chmod 4755 /usr/local/sbin/httpd-foreground \
     && ln -s /var/www/localhost/htdocs /var/www/html \
     && mkdir /run/apache2 
 
