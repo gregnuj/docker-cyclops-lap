@@ -49,6 +49,7 @@ RUN set -ex \
     && chmod 755 /usr/local/bin/httpd-foreground \
     && adduser -u 82 -D -S -G www-data www-data \
     && chown -R www-data:www-data /var/www \
+    && chmod 4755 /usr/local/sbin/httpd-foreground \
     && ln -s /var/www/localhost/htdocs /var/www/html \
     && mkdir /run/apache2 
 
@@ -63,12 +64,12 @@ ENV \
     # install codiad
     CODIAD_INSTALL="" \
     # install dbninja
-    DBNINJA_INSTALL="" \
+    ADMINER_INSTALL="" \
     # install webconsole
     WEBCONSOLE_INSTALL=""
 
-EXPOSE 22 80 443
+
+EXPOSE 22 80 443 9001
 VOLUME ["/var/www/html"]
 WORKDIR /var/www/html
 CMD ["/usr/bin/supervisord", "-n"]
-
