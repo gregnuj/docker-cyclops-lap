@@ -70,5 +70,5 @@ ENV \
 
 EXPOSE 22 80 443 9001
 VOLUME ["/var/www/html"]
-WORKDIR /var/www/html
+WORKDIR "/var/www/html"
 CMD ["/usr/bin/supervisord", "-n"]
