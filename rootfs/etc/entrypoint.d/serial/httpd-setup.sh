@@ -2,16 +2,18 @@
 
 export APP_USER="${APP_USER:-cyclops}"
 export APP_GROUP="${APP_GROUP:-${APP_USER}}"
-export APACHE_PORT="${APACHE_PORT:-80}"
+export HTTPD_PORT="${HTTPD_PORT:-80}"
 export HTDOCS_DIR="${HTDOCS_DIR:-/var/www/html}"
+export HTTPD_USER="${APP_USER}"
+export HTTPD_GROUP="${APP_GROUP}"
 
 sed -i \
     -e "s/#LoadModule rewrite_module/LoadModule rewrite_module/" \
-    -e "s/^User .*/User ${APP_USER}/" \
-    -e "s/^Group .*/Group ${APP_USER}/" \
-    -e "s/^Listen .*/Listen ${APACHE_PORT}/" \
+    -e "s/^User .*/User ${HTTPD_USER}/" \
+    -e "s/^Group .*/Group ${HTTPD_GROUP}/" \
+    -e "s/^Listen .*/Listen ${HTTPD_PORT}/" \
     -e "s/AllowOverride None/AllowOverride All/" \
     /etc/apache2/httpd.conf 
 
 # set/fix permissions for htdocs
-chown -R ${APP_USER}:${APP_GROUP} $(readlink ${HTDOCS_DIR})
+chown -R ${HTTPD_USER}:${HTTPD_GROUP} ${HTDOCS_DIR}
