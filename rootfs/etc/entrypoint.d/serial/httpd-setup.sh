@@ -4,16 +4,8 @@ export APP_USER="${APP_USER:-cyclops}"
 export APP_GROUP="${APP_GROUP:-${APP_USER}}"
 export HTTPD_PORT="${HTTPD_PORT:-80}"
 export HTDOCS_DIR="${HTDOCS_DIR:-/var/www/html}"
-
-# httpd user
-if [ "$APP_USER" == "root" ]; then
-    export HTTPD_USER="www-data"
-    export HTTPD_GROUP="www-data"
-else
-    export HTTPD_USER="${APP_USER}"
-    export HTTPD_GROUP="${APP_GROUP}"
-fi
-
+export HTTPD_USER="${APP_USER}"
+export HTTPD_GROUP="${APP_GROUP}"
 
 sed -i \
     -e "s/#LoadModule rewrite_module/LoadModule rewrite_module/" \
