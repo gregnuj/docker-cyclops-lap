@@ -45,7 +45,6 @@ ADD ./rootfs /
 
 # add www-data user
 RUN set -ex \
-    && chmod 4755 /usr/local/sbin/httpd-foreground \
     && chown -R www-data:www-data /var/www \
     && ln -s /var/www/localhost/htdocs /var/www/html \
     && mkdir /run/apache2 \
@@ -69,5 +68,5 @@ ENV \
 
 EXPOSE 22 80 443 9001
 VOLUME ["/var/www/html"]
-WORKDIR /var/www/html
+WORKDIR "/var/www/html"
 CMD ["/usr/bin/supervisord", "-n"]
