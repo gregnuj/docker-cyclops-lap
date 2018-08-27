@@ -16,4 +16,4 @@ sed -i \
     /etc/apache2/httpd.conf 
 
 # set/fix permissions for htdocs
-chown -R ${HTTPD_USER}:${HTTPD_GROUP} $(readlink ${HTDOCS_DIR})
+chown -R ${HTTPD_USER}:${HTTPD_GROUP} ${HTDOCS_DIR}
