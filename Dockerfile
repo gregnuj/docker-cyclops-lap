@@ -6,6 +6,7 @@ USER root
 RUN set -ex \
     && apk add --no-cache \
     php7 \
+    php7-apcu \
     php7-apache2 \
     php7-common \
     php7-curl \
