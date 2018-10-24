@@ -7,6 +7,7 @@ RUN set -ex \
     && apt-get update \
     && apt-get install -y \
     php7.2 \
+    php7.2-apcu \
     php7.2-common \
     php7.2-curl \
     php7.2-intl \
