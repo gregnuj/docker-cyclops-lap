@@ -12,6 +12,7 @@ RUN set -ex \
     php7-curl \
     php7-intl \
     php7-json \
+    php7-ldap \
     php7-memcached \
     php7-mcrypt \
     php7-mbstring \
