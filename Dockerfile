@@ -6,11 +6,13 @@ USER root
 RUN set -ex \
     && apk add --no-cache \
     php7 \
+    php7-apcu \
     php7-apache2 \
     php7-common \
     php7-curl \
     php7-intl \
     php7-json \
+    php7-ldap \
     php7-memcached \
     php7-mcrypt \
     php7-mbstring \
