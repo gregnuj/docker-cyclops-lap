@@ -50,23 +50,6 @@ ADD ./rootfs /
 RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data \
     && chown -R www-data:www-data /var/www \
-    && ln -s /var/www/localhost/htdocs /var/www/html \
     && mkdir /run/apache2 
-
-# env variables for entrypoint scripts
-ENV \
-    # defaults to $PWD/$APP_NAME
-    PROJECT_DIR="" \
-    # GIT URL to clone
-    PROJECT_GIT_URL="" \
-    # GIT BRANCH to clone
-    PROJECT_GIT_BRANCH="master" \
-    # install codiad
-    CODIAD_INSTALL="" \
-    # install dbninja
-    ADMINER_INSTALL="" \
-    # install webconsole
-    WEBCONSOLE_INSTALL=""
-
 
 EXPOSE 22 80 443 9001
