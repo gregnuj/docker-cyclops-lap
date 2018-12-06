@@ -13,7 +13,14 @@ sed -i \
     -e "s/^Group .*/Group ${HTTPD_GROUP}/" \
     -e "s/^Listen .*/Listen ${HTTPD_PORT}/" \
     -e "s/AllowOverride None/AllowOverride All/" \
-    /etc/apache2/httpd.conf 
+/etc/apache2/httpd.conf 
+
+if [ -f /etc/apache/envvars ]; then
+    sed -i \
+        -e "s/USER=www-data/USER=${HTTPD_USER}/" \
+        -e "s/GROUP=www-data/GROUP=${HTTPD_GROUP}/" \
+    /etc/apache2/envvars 
+fi
 
 # set/fix permissions for htdocs
 chown -R ${HTTPD_USER}:${HTTPD_GROUP} ${HTDOCS_DIR}
