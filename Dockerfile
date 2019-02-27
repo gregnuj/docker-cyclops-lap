@@ -50,6 +50,6 @@ ADD ./rootfs /
 RUN set -ex \
     && adduser -u 82 -D -S -G www-data www-data \
     && chown -R www-data:www-data /var/www \
-    && mkdir /run/apache2 
+    && mkdir -p /run/apache2 
 
 EXPOSE 22 80 443 9001
