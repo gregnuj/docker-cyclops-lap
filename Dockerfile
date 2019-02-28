@@ -48,7 +48,7 @@ ADD ./rootfs /
 # add www-data user
 RUN set -ex \
     && chown -R www-data:www-data /var/www \
-    && mkdir -p /run/apache2 
+    && mkdir -p /run/apache2 \
     && a2enmod rewrite
 
 EXPOSE 22 80 443 9001
